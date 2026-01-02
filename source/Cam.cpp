@@ -31,7 +31,8 @@ void	cv_handle::face_dectection(cv::Mat &frame) {
 		cv::rectangle(frame,
 			config.rect[i].tl(),
 			config.rect[i].br(),
-			cv::Scalar(0, 255, 0)
+			cv::Scalar(0, 255, 0),
+			cv_handle::THICKNESS
 		);
 	}
 

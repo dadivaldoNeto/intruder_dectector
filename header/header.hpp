@@ -34,6 +34,7 @@ namespace cv_handle {
 	const u_int32_t		time_per_frame = MS / FPS;
 	const std::string	WIN_NAME = "WEBCAM";
 	const std::string	CASCADE_PATH = "../assets/haarcascade_frontalface_default.xml";
+	const uint8_t		THICKNESS = 3;
 
 	void showCam(cv::VideoCapture &cam);
 	void face_dectection(cv::Mat &frame);
