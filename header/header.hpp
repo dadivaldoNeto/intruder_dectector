@@ -10,16 +10,32 @@
 namespace logs {
 
 	const std::string N_WEBCAM = "CAN NOT OPEN WEBCAM";
+	const std::string N_LOAD_CASCADE = "CAN NOT LOAD THE CASCADE PATH";
+
 	int error_msg(std::string msg);
 
 }
 
+typedef struct classifier {
+	cv::CascadeClassifier	detector;
+	cv::Mat					gray_image;
+	std::vector<cv::Rect>	rect;
+} t_classifier;
+
+extern t_classifier 		config;
+
 namespace cv_handle {
 
-	const uint8_t WEBCAM_LOCATION = 0;
-	const u_int32_t time_per_fps = MS / FPS;
-	const std::string WIN_NAME = "WEBCAM";
+
+	const int			ESC = 27;
+	const uint8_t		WEBCAM_LOCATION = 0;
+	const int8_t		WIN_NOT_EXISTS = -1;
+	const u_int32_t		time_per_frame = MS / FPS;
+	const std::string	WIN_NAME = "WEBCAM";
+	const std::string	CASCADE_PATH = "../assets/haarcascade_frontalface_default.xml";
 
 	void showCam(cv::VideoCapture &cam);
-	
+	void face_dectection(cv::Mat &frame); // https://docs.opencv.org/4.12.0/db/d28/tutorial_cascade_classifier.html
+	static inline bool x_button_was_clicked(void);
+
 }

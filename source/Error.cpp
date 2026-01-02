@@ -2,6 +2,6 @@
 
 
 int logs::error_msg(std::string msg) {
-	std::cout << msg << std::endl;
+	std::cerr << msg << std::endl;
 	return (EXIT_FAILURE);
 }

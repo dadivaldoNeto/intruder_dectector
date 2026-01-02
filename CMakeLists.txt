@@ -12,8 +12,6 @@ include_directories(
 	${CMAKE_CURRENT_SOURCE_DIR}/header PUBLIC
 )
 
-add_library(OBJS_FILES OBJECT ${SRC_FILES})
-
-add_executable(${BIN} $<TARGET_OBJECTS:OBJS_FILES>)
+add_executable(${BIN} ${SRC_FILES})
 
 target_link_libraries(${BIN} ${OpenCV_LIBS})
