@@ -34,6 +34,7 @@ void	cv_handle::face_dectection(cv::Mat &frame) {
 			cv::Scalar(0, 255, 0)
 		);
 	}
+
 }
 
 void cv_handle::showCam(cv::VideoCapture &cam) {
@@ -47,6 +48,7 @@ void cv_handle::showCam(cv::VideoCapture &cam) {
 		cam >> frame;
 		if (frame.empty())
 			return ;
+		cv::flip(frame, frame, cv_handle::INVERT_AXIS);
 		cv_handle::face_dectection(frame);
 		cv::imshow(cv_handle::WIN_NAME, frame);
 		key = cv::waitKey(cv_handle::time_per_frame);

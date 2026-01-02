@@ -11,4 +11,5 @@ int	main(void) {
 		return (logs::error_msg(logs::N_LOAD_CASCADE));
 	cv_handle::showCam(cam);
 	return (0);
+
 }

@@ -5,7 +5,15 @@
 #include <opencv2/opencv.hpp>
 
 # define MS 1000
-# define FPS 60
+# define FPS 120
+
+typedef struct classifier {
+	cv::CascadeClassifier	detector;
+	cv::Mat					gray_image;
+	std::vector<cv::Rect>	rect;
+} t_classifier;
+
+extern t_classifier	config;
 
 namespace logs {
 
@@ -16,18 +24,11 @@ namespace logs {
 
 }
 
-typedef struct classifier {
-	cv::CascadeClassifier	detector;
-	cv::Mat					gray_image;
-	std::vector<cv::Rect>	rect;
-} t_classifier;
-
-extern t_classifier 		config;
-
 namespace cv_handle {
 
 
 	const int			ESC = 27;
+	const uint8_t		INVERT_AXIS = 1;
 	const uint8_t		WEBCAM_LOCATION = 0;
 	const int8_t		WIN_NOT_EXISTS = -1;
 	const u_int32_t		time_per_frame = MS / FPS;
@@ -35,7 +36,7 @@ namespace cv_handle {
 	const std::string	CASCADE_PATH = "../assets/haarcascade_frontalface_default.xml";
 
 	void showCam(cv::VideoCapture &cam);
-	void face_dectection(cv::Mat &frame); // https://docs.opencv.org/4.12.0/db/d28/tutorial_cascade_classifier.html
+	void face_dectection(cv::Mat &frame);
 	static inline bool x_button_was_clicked(void);
 
 }
